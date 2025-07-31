@@ -47,6 +47,14 @@ body {
 .card {
   cursor: pointer;
   transition: transform 1s ease;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none !important;
 }
 
 .outside,
@@ -189,6 +197,8 @@ body {
   box-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: pulse 3s infinite ease-in-out;
+  -webkit-tap-highlight-color: transparent;
+  outline: none !important;
 }
 
 .profile-btn:hover, .profile-btn:focus {
