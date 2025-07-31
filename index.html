@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Card</title>
+    <!-- Google Font-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="profile-container">
+      <button class="profile-btn" onclick="toggleProfile()">
+        <img src="minori.png" alt="Profile" class="profile-img">
+      </button>
+      <div id="profileDropdown" class="profile-dropdown">
+        <div class="profile-name">minoriみのり</div>
+      </div>
+    </div>
+    <div class="card" onclick="toggleCard(this, event); playAudio()" onload="playAudio()">
+      <div class="outside">
+        <div class="front">
+          <div class="cake-icon"></div>
+          <div class="content">
+            <p> </p>
+            <h4>みのりちゃん</h4>
+            <h5>૮ ˶ᵔ ᵕ ᵔ˶ ა</h5>
+          </div>
+        </div> 
+        <div class="back"></div>
+      </div>
+      <div class="inside">
+        <p>🎂BELATED HAPPY BIRTHDAY♪~🎂</p>
+        <p>遅れちゃってごめんね。</p>
+        <P>お誕生日おめでとう！✨</p>
+        <p>良い一年になりますように!</p>
+        <p>私に親切にしてくれてありがとう</p>
+        <br>
+        <p>-mikeミケさん</p>
+        <img src="e.gif" alt="Gift Image" class="gift-image"/>
+        <audio id="birthdayAudio">
+          <source src="takano.mp3" type="audio/mpeg">
+          <!-- Your browser does not support the audio element. -->
+        </audio>
+       </div>
+    </div>
+  <h3 class="instruction2">[Card] をクリックして開きます。 カードの外側をクリックして閉じます</h3>
+  <h3 class="instruction">Click the Card to open. Click outside the card to close</h3>
+
+    <script>
+      function playAudio() {
+        var audio = document.getElementById("birthdayAudio");
+        audio.play();
+      }
+      
+      function toggleProfile() {
+        const dropdown = document.getElementById('profileDropdown');
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      }
+      
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(event) {
+        const profileContainer = document.querySelector('.profile-container');
+        if (!profileContainer.contains(event.target)) {
+          document.getElementById('profileDropdown').style.display = 'none';
+        }
+      });
+      
+      function toggleCard(card, event) {
+        event.stopPropagation();
+        card.classList.toggle('card-open');
+      }
+      
+      // Close card when clicking outside
+      document.addEventListener('click', function(event) {
+        const card = document.querySelector('.card');
+        if (!card.contains(event.target)) {
+          card.classList.remove('card-open');
+        }
+      });
+    </script>
+     <style>
+    .instruction,
+    .instruction2 {
+      color: white;
+      position: fixed;
+      bottom: 10px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-family: "Poppins", sans-serif;
+      font-size: 10px; /* Adjust the font size as needed */
+    }
+    .instruction2 {
+      bottom: 30px; /* Adjusted to make it above instruction */
+      z-index: 2; /* Ensure it's above instruction */
+      font-size: 12px; /* Adjust the font size as needed */
+    }
+  </style>
+  </body>
+</html>
